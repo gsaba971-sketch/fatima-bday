@@ -14,8 +14,8 @@
         .no-btn { background-color: #fce4ec; color: #d81b60; border: 1px solid #ff85b3; }
         #final-stage { display: none; }
         img { width: 100%; border-radius: 15px; margin-top: 15px; }
-        /* إخفاء مشغل اليوتيوب */
-        #youtube-player { position: absolute; top: -500px; left: -500px; width: 1px; height: 1px; visibility: hidden; }
+        .play-music-btn { background-color: #4CAF50; color: white; margin-top: 20px; padding: 15px; width: 100%; border-radius: 10px; font-size: 18px; display: block; border: none; cursor: pointer; }
+        #video-container { display: none; }
     </style>
 </head>
 <body>
@@ -40,7 +40,10 @@
         <h1 style="font-size: 24px;">HAPPY BIRTHDAY FATIMA! 🎉🎂</h1>
         <img src="cake_img.jpg" alt="Fatima Birthday">
         <p style="color: #d81b60; font-weight: bold;">سنة حلوة يا جميل! 🎈</p>
-        <div id="youtube-container"></div>
+        
+        <button class="play-music-btn" onclick="startBirthdaySong()">اضغطي هنا لتشغيل أغنية العيد! 🎵</button>
+        
+        <div id="video-container"></div>
     </div>
 
     <script>
@@ -66,15 +69,15 @@
         function showSurprise() {
             document.getElementById('q2').style.display = 'none';
             document.getElementById('final-stage').style.display = 'block';
-            
-            // إضافة فيديو اليوتيوب للأغنية بشكل آلي عند الضغط
-            const container = document.getElementById('youtube-container');
+        }
+
+        function startBirthdaySong() {
+            const container = document.getElementById('video-container');
+            // تشغيل فيديو يوتيوب لأغنية إيهاب توفيق
             container.innerHTML = '<iframe width="1" height="1" src="https://www.youtube.com/embed/Ssh_SjY6r7w?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
+            // إخفاء الزر بعد الضغط عليه
+            document.querySelector('.play-music-btn').style.display = 'none';
         }
     </script>
 </body>
 </html>
- 
-
-
-
