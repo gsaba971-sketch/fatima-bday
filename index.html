@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد فاطمة 🌸</title>
+    <style>
+        body {
+            background-color: #ffdae9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(216, 27, 96, 0.2);
+            border: 4px solid #ff85b3;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+        h1 { color: #d81b60; font-size: 18px; margin-bottom: 25px; line-height: 1.6; }
+        .btn-wrap { position: relative; height: 120px; width: 100%; }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.1s;
+        }
+        .yes-btn { background-color: #ff4081; color: white; }
+        .no-btn { background-color: #fce4ec; color: #d81b60; border: 1px solid #ff85b3; }
+        #final-stage { display: none; }
+        img { width: 100%; border-radius: 15px; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <div id="q1" class="box">
+        <h1>Do you think the birthday girl will finally stop her "silly" hobbies now that she’s a year older?</h1>
+        <div class="btn-wrap">
+            <button id="runYes" class="yes-btn" style="position: absolute; left: 10%;">Yes</button>
+            <button class="no-btn" style="position: absolute; right: 10%;" onclick="nextStep()">No</button>
+        </div>
+    </div>
+
+    <div id="q2" class="box" style="display: none;">
+        <h1>Are you ready?</h1>
+        <div class="btn-wrap">
+            <button id="runNo" class="no-btn" style="position: absolute; right: 10%;">No</button>
+            <button class="yes-btn" style="position: absolute; left: 10%;" onclick="showSurprise()">Yes</button>
+        </div>
+    </div>
+
+    <div id="final-stage" class="box">
+        <h1 style="font-size: 24px;">HAPPY BIRTHDAY FATIMA! 🎉🎂</h1>
+        <img src="cake_img.jpg" alt="Fatima Birthday">
+        <p style="color: #d81b60; font-weight: bold;">سنة حلوة يا جميل! 🎈</p>
+    </div>
+
+    <audio id="music" loop>
+        <source src="sana_helwa.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const runYes = document.getElementById('runYes');
+        const runNo = document.getElementById('runNo');
+
+        runYes.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - runYes.offsetWidth);
+            const y = Math.random() * (window.innerHeight - runYes.offsetHeight);
+            runYes.style.position = 'fixed';
+            runYes.style.left = x + 'px';
+            runYes.style.top = y + 'px';
+        });
+
+        function nextStep() {
+            document.getElementById('q1').style.display = 'none';
+            document.getElementById('q2').style.display = 'block';
+            runNo.addEventListener('mouseover', () => {
+                const x = Math.random() * (window.innerWidth - runNo.offsetWidth);
+                const y = Math.random() * (window.innerHeight - runNo.offsetHeight);
+                runNo.style.position = 'fixed';
+                runNo.style.left = x + 'px';
+                runNo.style.top = y + 'px';
+            });
+        }
+
+        function showSurprise() {
+            document.getElementById('q2').style.display = 'none';
+            document.getElementById('final-stage').style.display = 'block';
+            const audio = document.getElementById('music');
+            audio.play().catch(() => alert("اضغطي على الشاشة لتشغيل الأغنية! 🎶"));
+        }
+    </script>
+</body>
+</html>
